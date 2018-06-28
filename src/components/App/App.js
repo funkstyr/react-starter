@@ -8,18 +8,32 @@ import routes from './routes';
 import * as actions from '../../actions';
 
 class App extends Component {
+  renderRoutes = () => {
+    return routes.map(route => {
+      return <Route key={route.title} {...route} />;
+    });
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <div>
+          <Helmet titleTemplate={`%s - NAME`} />
+          <Switch>{this.renderRoutes()}</Switch>
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state = {}) => {
+  const { navCollapsed } = state.display;
+  return {
+    navCollapsed
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(App);
