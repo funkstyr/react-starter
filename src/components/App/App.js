@@ -11,6 +11,19 @@ import * as actions from '../../actions';
 
 const { Header, Content, Footer } = Layout;
 
+const styles = {
+  root: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  footer: {
+    bottom: 0
+  }
+};
+
 class App extends Component {
   renderRoutes = () => {
     return routes.map(route => {
@@ -21,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={styles.root}>
           <Helmet titleTemplate={`%s - NAME`} />
           <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
@@ -42,8 +55,8 @@ class App extends Component {
                 <Switch>{this.renderRoutes()}</Switch>
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
-              Ant Design ©2016 Created by Ant UED
+            <Footer style={{ textAlign: 'center', bottom: 0 }}>
+              NAME ©{new Date().getFullYear()}
             </Footer>
           </Layout>
         </div>
