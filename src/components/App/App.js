@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './App.css';
+import routes from './routes';
+import * as actions from '../../actions';
 
 class App extends Component {
   render() {
