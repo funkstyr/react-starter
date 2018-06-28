@@ -1,4 +1,11 @@
-import Landing from '../Landing/Landing';
+import React from 'react';
+import Loadable from 'react-loadable';
+
+const loading = () => <div>Loading...</div>;
+const Landing = Loadable({
+  loader: () => import('../Landing/Landing'),
+  loading
+});
 
 export default [
   {
